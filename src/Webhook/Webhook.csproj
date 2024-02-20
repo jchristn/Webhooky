@@ -1,0 +1,66 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+		<ApplicationIcon>Assets\icon.ico</ApplicationIcon>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<DocumentationFile>Webhooky.xml</DocumentationFile>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageId>Webhooky</PackageId>
+		<Title>Webhooky makes it simple to add webhooks to your application.</Title>
+		<Version>1.0.0</Version>
+		<Authors>Joel Christner</Authors>
+		<Company>Joel Christner</Company>
+		<Product>Webhooky</Product>
+		<Description>Webhooky makes it simple to add webhooks to your application.</Description>
+		<Copyright>(c)2024 Joel Christner</Copyright>
+		<PackageProjectUrl>https://github.com/jchristn/webhooky</PackageProjectUrl>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RepositoryUrl>https://github.com/jchristn/webhooky</RepositoryUrl>
+		<RepositoryType>github</RepositoryType>
+		<PackageTags>webhook postback</PackageTags>
+		<PackageReleaseNotes>Initial release.</PackageReleaseNotes>
+		<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+		<IncludeSymbols>True</IncludeSymbols>
+		<EnforceCodeStyleInBuild>False</EnforceCodeStyleInBuild>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Content Include="Assets\icon.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="..\..\LICENSE.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	  <None Include="..\..\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="RestWrapper" Version="3.0.18" />
+		<PackageReference Include="WatsonORM" Version="3.0.8" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="Assets\icon.ico">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Include="Assets\icon.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Webhooky.xml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+</Project>

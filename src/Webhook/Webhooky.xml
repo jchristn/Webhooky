@@ -1,0 +1,694 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Webhook</name>
+    </assembly>
+    <members>
+        <member name="T:Webhook.Managers.EventManager">
+            <summary>
+            WebhookEvent manager.
+            </summary>
+        </member>
+        <member name="M:Webhook.Managers.EventManager.#ctor(Webhook.WebhookSettings,Watson.ORM.WatsonORM)">
+            <summary>
+            Instantiate.
+            </summary>
+            <param name="settings">Settings.</param>
+            <param name="orm">ORM.</param>
+        </member>
+        <member name="M:Webhook.Managers.EventManager.AllByRule(System.String)">
+            <summary>
+            Retrieve all by rule GUID.
+            </summary>
+            <param name="guid">Rule GUID.</param>
+            <returns>List of WebhookEvent.</returns>
+        </member>
+        <member name="M:Webhook.Managers.EventManager.AllByTarget(System.String)">
+            <summary>
+            Retrieve all by target GUID.
+            </summary>
+            <param name="guid">Target GUID.</param>
+            <returns>List of WebhookEvent.</returns>
+        </member>
+        <member name="M:Webhook.Managers.EventManager.AllByOperation(System.String)">
+            <summary>
+            Retrieve all by operation type.
+            </summary>
+            <param name="operationType">Operation type.</param>
+            <returns>List of WebhookEvent.</returns>
+        </member>
+        <member name="M:Webhook.Managers.EventManager.Remove(System.String)">
+            <summary>
+            Remove.
+            </summary>
+            <param name="guid">GUID.</param>
+        </member>
+        <member name="M:Webhook.Managers.EventManager.RemoveAllByTarget(System.String)">
+            <summary>
+            Remove all by target GUID.
+            </summary>
+            <param name="guid">Target GUID.</param>
+        </member>
+        <member name="M:Webhook.Managers.EventManager.RemoveAllByRule(System.String)">
+            <summary>
+            Remove all by rule GUID.
+            </summary>
+            <param name="guid">Rule GUID.</param>
+        </member>
+        <member name="M:Webhook.Managers.EventManager.RemoveAllByOperation(System.String)">
+            <summary>
+            Remove all by operation type.
+            </summary>
+            <param name="operationType">Operation type.</param>
+        </member>
+        <member name="M:Webhook.Managers.EventManager.GetPending(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Retrieve pending events.
+            </summary>
+            <param name="targetGuid">Target GUID.</param>
+            <param name="ruleGuid">Rule GUID.</param>
+            <param name="operationType">Operation type.</param>
+            <param name="maxResults">Maximum number of results.</param>
+            <returns>List of WebhookEvent.</returns>
+        </member>
+        <member name="M:Webhook.Managers.EventManager.GetFailed(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Retrieve failed events.
+            </summary>
+            <param name="targetGuid">Target GUID.</param>
+            <param name="ruleGuid">Rule GUID.</param>
+            <param name="operationType">Operation type.</param>
+            <param name="maxResults">Maximum number of results.</param>
+            <returns>List of WebhookEvent.</returns>
+        </member>
+        <member name="M:Webhook.Managers.EventManager.GetSucceeded(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Retrieve successful events.
+            </summary>
+            <param name="targetGuid">Target GUID.</param>
+            <param name="ruleGuid">Rule GUID.</param>
+            <param name="operationType">Operation type.</param>
+            <param name="maxResults">Maximum number of results.</param>
+            <returns>List of WebhookEvent.</returns>
+        </member>
+        <member name="M:Webhook.Managers.EventManager.GetExpired(System.DateTime,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Retrieve expired events.
+            </summary>
+            <param name="expiration">Expiration timestamp, UTC.</param>
+            <param name="targetGuid">Target GUID.</param>
+            <param name="ruleGuid">Rule GUID.</param>
+            <param name="operationType">Operation type.</param>
+            <param name="maxResults">Maximum number of results.</param>
+            <returns>List of WebhookEvent.</returns>
+        </member>
+        <member name="T:Webhook.Managers.RuleManager">
+            <summary>
+            WebhookRule manager.
+            </summary>
+        </member>
+        <member name="M:Webhook.Managers.RuleManager.#ctor(Webhook.WebhookSettings,Watson.ORM.WatsonORM)">
+            <summary>
+            Instantiate.
+            </summary>
+            <param name="settings">Settings.</param>
+            <param name="orm">ORM.</param>
+        </member>
+        <member name="M:Webhook.Managers.RuleManager.Add(Webhook.WebhookRule)">
+            <summary>
+            Add.
+            </summary>
+            <param name="rule">WebhookRule.</param>
+            <returns>WebhookRule.</returns>
+        </member>
+        <member name="M:Webhook.Managers.RuleManager.Update(Webhook.WebhookRule)">
+            <summary>
+            Update.
+            </summary>
+            <param name="rule">WebhookRule.</param>
+            <returns>WebhookRule.</returns>
+        </member>
+        <member name="M:Webhook.Managers.RuleManager.Remove(System.String)">
+            <summary>
+            Remove.
+            </summary>
+            <param name="guid">GUID.</param>
+        </member>
+        <member name="M:Webhook.Managers.RuleManager.All">
+            <summary>
+            Retrieve all.
+            </summary>
+            <returns>List of WebhookRule.</returns>
+        </member>
+        <member name="M:Webhook.Managers.RuleManager.Exists(System.String)">
+            <summary>
+            Verify existence.
+            </summary>
+            <param name="guid">GUID.</param>
+            <returns>Boolean indicating existence.</returns>
+        </member>
+        <member name="M:Webhook.Managers.RuleManager.FindMatching(System.String,System.String)">
+            <summary>
+            Find matching entries.
+            </summary>
+            <param name="operationType">Operation type.</param>
+            <param name="targetGuid">Target GUID.</param>
+            <returns>List of WebhookRule.</returns>
+        </member>
+        <member name="T:Webhook.Managers.TargetManager">
+            <summary>
+            WebhookTarget manager.
+            </summary>
+        </member>
+        <member name="M:Webhook.Managers.TargetManager.#ctor(Webhook.WebhookSettings,Watson.ORM.WatsonORM)">
+            <summary>
+            Instantiate.
+            </summary>
+            <param name="settings">Settings.</param>
+            <param name="orm">ORM.</param>
+        </member>
+        <member name="M:Webhook.Managers.TargetManager.Add(Webhook.WebhookTarget)">
+            <summary>
+            Add.
+            </summary>
+            <param name="target">WebhookTarget.</param>
+            <returns>WebhookTarget.</returns>
+        </member>
+        <member name="M:Webhook.Managers.TargetManager.Update(Webhook.WebhookTarget)">
+            <summary>
+            Add.
+            </summary>
+            <param name="target">WebhookTarget.</param>
+            <returns>WebhookTarget.</returns>
+        </member>
+        <member name="M:Webhook.Managers.TargetManager.Remove(System.String)">
+            <summary>
+            Remove.
+            </summary>
+            <param name="guid">GUID.</param>
+        </member>
+        <member name="M:Webhook.Managers.TargetManager.All">
+            <summary>
+            Retrieve all.
+            </summary>
+            <returns>List of WebhookTarget.</returns>
+        </member>
+        <member name="M:Webhook.Managers.TargetManager.Exists(System.String)">
+            <summary>
+            Verify existence.
+            </summary>
+            <param name="guid">GUID.</param>
+            <returns>Boolean indicating existence.</returns>
+        </member>
+        <member name="M:Webhook.Managers.TargetManager.Read(System.String)">
+            <summary>
+            Read.
+            </summary>
+            <param name="guid">GUID.</param>
+            <returns>WebhookTarget.</returns>
+        </member>
+        <member name="T:Webhook.Services.StorageService">
+            <summary>
+            Storage service.
+            </summary>
+        </member>
+        <member name="P:Webhook.Services.StorageService.StreamBufferSize">
+            <summary>
+            Stream buffer size.
+            </summary>
+        </member>
+        <member name="P:Webhook.Services.StorageService.FreeSpace">
+            <summary>
+            Retrieve the free space in the storage repository.
+            </summary>
+        </member>
+        <member name="M:Webhook.Services.StorageService.#ctor(System.String)">
+            <summary>
+            Instantiate.
+            </summary>
+            <param name="directory">Directory.</param>
+        </member>
+        <member name="M:Webhook.Services.StorageService.Read(System.String)">
+            <summary>
+            Read data from the supplied object.
+            </summary>
+            <param name="key">Object key.</param>
+            <returns>Byte data from the object.</returns>
+        </member>
+        <member name="M:Webhook.Services.StorageService.ReadStream(System.String)">
+            <summary>
+            Access the FileStream for a given object with read permission.  Dispose of the stream when finished.
+            </summary>
+            <param name="key">Object key.</param>
+            <returns>FileStream.</returns>
+        </member>
+        <member name="M:Webhook.Services.StorageService.ReadWriteStream(System.String)">
+            <summary>
+            Access the FileStream for a given object with both read and write permissions.  Dispose of the stream when finished.
+            </summary>
+            <param name="key">Object key.</param>
+            <returns>FileStream.</returns>
+        </member>
+        <member name="M:Webhook.Services.StorageService.Write(System.String,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Write an object.
+            </summary>
+            <param name="key">Object key.</param>
+            <param name="data">Byte data from the object.</param>
+            <param name="token">Cancellation token.</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="M:Webhook.Services.StorageService.WriteStream(System.String)">
+            <summary>
+            Access the FileStream for a given object with write permission.  Dispose of the stream when finished.
+            </summary>
+            <param name="key">Object key.</param>
+            <returns>FileStream.</returns>
+        </member>
+        <member name="M:Webhook.Services.StorageService.Write(System.String,System.Int64,System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Write an object.
+            </summary>
+            <param name="key">Object key.</param>
+            <param name="contentLength">Number of bytes to write.</param>
+            <param name="stream">Stream from which data should be read.</param>
+            <param name="token">Cancellation token.</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="M:Webhook.Services.StorageService.Copy(System.String,System.String,System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            Copy an object.
+            </summary>
+            <param name="source">Source key.</param>
+            <param name="target">Target key.</param>
+            <param name="contentLength">Content length.</param>
+            <param name="token">Cancellation token.</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="M:Webhook.Services.StorageService.Move(System.String,System.String,System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Move the target object with the source object.  The source object will be deleted.
+            </summary>
+            <param name="source">Source object.</param>
+            <param name="target">Target object.</param>
+            <param name="overwrite">Overwrite the target object if it already exists.</param>
+            <param name="token">Cancellation token.</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="M:Webhook.Services.StorageService.Exists(System.String)">
+            <summary>
+            Check of an object exists.
+            </summary>
+            <param name="key">Object key.</param>
+            <returns>True if exists.</returns>
+        </member>
+        <member name="M:Webhook.Services.StorageService.Delete(System.String)">
+            <summary>
+            Delete an object.
+            </summary>
+            <param name="key">Object key.</param>
+        </member>
+        <member name="M:Webhook.Services.StorageService.GetSize(System.String)">
+            <summary>
+            Retrieve the size of a given object.
+            </summary>
+            <param name="key">Object key.</param>
+            <returns>Long.</returns>
+        </member>
+        <member name="M:Webhook.Services.StorageService.GetFilename(System.String)">
+            <summary>
+            Retrieve the filename of a given object.
+            </summary>
+            <param name="key">Object key.</param>
+            <returns>Filename.</returns>
+        </member>
+        <member name="T:Webhook.WebhookEvent">
+            <summary>
+            Webhook event.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookEvent.Id">
+            <summary>
+            ID.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookEvent.GUID">
+            <summary>
+            GUID.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookEvent.TargetGUID">
+            <summary>
+            Target GUID.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookEvent.RuleGUID">
+            <summary>
+            Rule GUID.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookEvent.OperationType">
+            <summary>
+            Operation type.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookEvent.ContentLength">
+            <summary>
+            Content length.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookEvent.Url">
+            <summary>
+            URL.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookEvent.Uri">
+            <summary>
+            URI.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookEvent.ContentType">
+            <summary>
+            Content type.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookEvent.ExpectStatus">
+            <summary>
+            HTTP status to expect on success.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookEvent.RetryIntervalMs">
+            <summary>
+            Retry interval in milliseconds.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookEvent.Attempt">
+            <summary>
+            Attempt number.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookEvent.MaxAttempts">
+            <summary>
+            Maximum attempts.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookEvent.HttpStatus">
+            <summary>
+            HTTP status last received.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookEvent.AddedUtc">
+            <summary>
+            Timestamp when added, UTC.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookEvent.LastAttemptUtc">
+            <summary>
+            Timestamp when last attempted, UTC.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookEvent.NextAttemptUtc">
+            <summary>
+            Timestamp for next attempt, UTC.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookEvent.LastFailureUtc">
+            <summary>
+            Timestamp for last failure, UTC.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookEvent.SuccessUtc">
+            <summary>
+            Timestamp for success, UTC.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookEvent.FailedUtc">
+            <summary>
+            Timestamp for failed, UTC.
+            </summary>
+        </member>
+        <member name="M:Webhook.WebhookEvent.#ctor">
+            <summary>
+            Instantiate.
+            </summary>
+        </member>
+        <member name="T:Webhook.WebhookEventArgs">
+            <summary>
+            Webhook event arguments.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookEventArgs.Event">
+            <summary>
+            Webhook event.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookEventArgs.Status">
+            <summary>
+            Status.
+            </summary>
+        </member>
+        <member name="M:Webhook.WebhookEventArgs.#ctor">
+            <summary>
+            Instantiate.
+            </summary>
+        </member>
+        <member name="T:Webhook.WebhookEventStatusEnum">
+            <summary>
+            Webhook event status enumeration.
+            </summary>
+        </member>
+        <member name="F:Webhook.WebhookEventStatusEnum.Created">
+            <summary>
+            Created.
+            </summary>
+        </member>
+        <member name="F:Webhook.WebhookEventStatusEnum.AttemptFailed">
+            <summary>
+            AttemptFailed.
+            </summary>
+        </member>
+        <member name="F:Webhook.WebhookEventStatusEnum.TaskFailed">
+            <summary>
+            TaskFailed.
+            </summary>
+        </member>
+        <member name="F:Webhook.WebhookEventStatusEnum.Succeeded">
+            <summary>
+            Succeeded.
+            </summary>
+        </member>
+        <member name="F:Webhook.WebhookEventStatusEnum.Expired">
+            <summary>
+            Expired.
+            </summary>
+        </member>
+        <member name="T:Webhook.WebhookManager">
+            <summary>
+            Webhook manager.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookManager.Logger">
+            <summary>
+            Method to invoke to send log messages.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookManager.Rules">
+            <summary>
+            Rules.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookManager.Targets">
+            <summary>
+            Targets.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookManager.Events">
+            <summary>
+            Events.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookManager.Requests">
+            <summary>
+            Request storage repository.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookManager.Responses">
+            <summary>
+            Responses storage repository.
+            </summary>
+        </member>
+        <member name="F:Webhook.WebhookManager.OnWebhookEvent">
+            <summary>
+            Event handler for webhook events.
+            </summary>
+        </member>
+        <member name="M:Webhook.WebhookManager.#ctor(Webhook.WebhookSettings)">
+            <summary>
+            Instantiate.
+            </summary>
+            <param name="settings">Settings.</param>
+        </member>
+        <member name="M:Webhook.WebhookManager.Dispose">
+            <summary>
+            Dispose.
+            </summary>
+        </member>
+        <member name="M:Webhook.WebhookManager.AddEvent(System.String,System.String,System.String)">
+            <summary>
+            Add an event.
+            </summary>
+            <param name="operationType">Operation type.</param>
+            <param name="data">Data.</param>
+            <param name="targetGuid">Target GUID.</param>
+            <returns>List of WebhookEvent.</returns>
+        </member>
+        <member name="M:Webhook.WebhookManager.AddEvent(System.String,System.Byte[],System.String)">
+            <summary>
+            Add an event.
+            </summary>
+            <param name="operationType">Operation type.</param>
+            <param name="data">Data.</param>
+            <param name="targetGuid">Target GUID.</param>
+            <returns>List of WebhookEvent.</returns>
+        </member>
+        <member name="M:Webhook.WebhookManager.GetRequestBody(System.String)">
+            <summary>
+            Retrieve request body for an event.
+            </summary>
+            <param name="eventGuid">GUID.</param>
+            <returns>Byte array.</returns>
+        </member>
+        <member name="M:Webhook.WebhookManager.GetResponseBody(System.String)">
+            <summary>
+            Retrieve response body for an event.
+            </summary>
+            <param name="eventGuid">GUID.</param>
+            <returns>Byte array.</returns>
+        </member>
+        <member name="T:Webhook.WebhookRule">
+            <summary>
+            Webhook rule.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookRule.Id">
+            <summary>
+            ID.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookRule.GUID">
+            <summary>
+            GUID.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookRule.TargetGUID">
+            <summary>
+            Target GUID.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookRule.Name">
+            <summary>
+            Name.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookRule.OperationType">
+            <summary>
+            Operation type.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookRule.MaxAttempts">
+            <summary>
+            Maximum number of attempts.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookRule.RetryIntervalMs">
+            <summary>
+            Retry interval in milliseconds.
+            </summary>
+        </member>
+        <member name="M:Webhook.WebhookRule.#ctor">
+            <summary>
+            Instantiate.
+            </summary>
+        </member>
+        <member name="T:Webhook.WebhookSettings">
+            <summary>
+            Webhook settings.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookSettings.Database">
+            <summary>
+            Database settings.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookSettings.RequestsDirectory">
+            <summary>
+            Directory to store request body data.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookSettings.ResponsesDirectory">
+            <summary>
+            Directory to store response body data.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookSettings.PollIntervalMs">
+            <summary>
+            Polling interval for tasks to run or events to expire.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookSettings.ResponseRetentionMs">
+            <summary>
+            Number of milliseconds to persist response body data.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookSettings.BatchSize">
+            <summary>
+            Batch size for processing tasks to run or events to expire.
+            </summary>
+        </member>
+        <member name="M:Webhook.WebhookSettings.#ctor">
+            <summary>
+            Instantiate.
+            </summary>
+        </member>
+        <member name="T:Webhook.WebhookTarget">
+            <summary>
+            Webhook target.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookTarget.Id">
+            <summary>
+            ID.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookTarget.GUID">
+            <summary>
+            GUID.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookTarget.Url">
+            <summary>
+            URL.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookTarget.Uri">
+            <summary>
+            URI.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookTarget.ContentType">
+            <summary>
+            Content type.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookTarget.ExpectStatus">
+            <summary>
+            HTTP status to expect for the request to be considered successful.
+            </summary>
+        </member>
+        <member name="M:Webhook.WebhookTarget.#ctor">
+            <summary>
+            Instantiate.
+            </summary>
+        </member>
+    </members>
+</doc>
