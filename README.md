@@ -1,4 +1,4 @@
-﻿![alt tag](https://github.com/jchristn/webhooky/blob/master/assets/icon.ico)
+﻿![alt tag](https://github.com/jchristn/Webhooky/raw/main/Assets/icon.ico)
 
 # Webhooky
 
