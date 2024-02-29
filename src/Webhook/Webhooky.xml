@@ -357,6 +357,11 @@
             Content length.
             </summary>
         </member>
+        <member name="P:Webhook.WebhookEvent.TimeoutMs">
+            <summary>
+            Timeout in milliseconds.
+            </summary>
+        </member>
         <member name="P:Webhook.WebhookEvent.Url">
             <summary>
             URL.
@@ -603,6 +608,11 @@
         <member name="P:Webhook.WebhookRule.RetryIntervalMs">
             <summary>
             Retry interval in milliseconds.
+            </summary>
+        </member>
+        <member name="P:Webhook.WebhookRule.TimeoutMs">
+            <summary>
+            Timeout in milliseconds.
             </summary>
         </member>
         <member name="M:Webhook.WebhookRule.#ctor">

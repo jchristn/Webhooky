@@ -243,6 +243,7 @@
                     ContentLength = data.Length,
                     Attempt = 0,
                     MaxAttempts = rule.MaxAttempts,
+                    TimeoutMs = rule.TimeoutMs,
                     HttpStatus = 0,
                     AddedUtc = dt,
                     NextAttemptUtc = dt
@@ -339,6 +340,7 @@
                             {
                                 using (RestRequest restReq = new RestRequest(ev.Url, System.Net.Http.HttpMethod.Post))
                                 {
+                                    restReq.TimeoutMilliseconds = ev.TimeoutMs;
                                     restReq.ContentType = ev.ContentType;
 
                                     using (RestResponse restResp = await restReq.SendAsync(body, _TokenSource.Token).ConfigureAwait(false))

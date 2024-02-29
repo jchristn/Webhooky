@@ -61,6 +61,23 @@
         }
 
         /// <summary>
+        /// Timeout in milliseconds.
+        /// </summary>
+        [Column("timeoutms", false, DataTypes.Int, false)]
+        public int TimeoutMs
+        {
+            get
+            {
+                return _TimeoutMs;
+            }
+            set
+            {
+                if (value < 1) throw new ArgumentOutOfRangeException(nameof(TimeoutMs));
+                _TimeoutMs = value;
+            }
+        }
+
+        /// <summary>
         /// URL.
         /// </summary>
         [Column("url", false, DataTypes.Nvarchar, 256, false)]
@@ -245,6 +262,7 @@
         private int _HttpStatus = 0;
         private int _Attempt = 0;
         private int _MaxAttempts = 5;
+        private int _TimeoutMs = (60 * 1000); // 1 minute
 
         #endregion
 
